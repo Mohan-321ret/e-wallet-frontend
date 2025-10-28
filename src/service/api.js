@@ -1,46 +1,59 @@
 import axios from 'axios';
 
-const BASE_URL = "https://e-wallet-backend-e6gf.onrender.com";
+// 🔹 Base API URL (manual or via .env)
+const BASE_URL =
+  process.env.REACT_APP_BASE_API_URL || "https://e-wallet-backend-e6gf.onrender.com";
 
-const api = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-// Auth APIs
+// ------------------------------------------------------------
+// 🔹 AUTH APIs
+// ------------------------------------------------------------
 export const authAPI = {
-  login: (data) => api.post('/auth/login', data),
-  register: (data) => api.post('/auth/register', data),
-  test: () => api.get('/auth/test'),
+  login: (data) => axios.post(`${BASE_URL}/auth/login`, data, {
+    headers: { 'Content-Type': 'application/json' },
+  }),
+  register: (data) => axios.post(`${BASE_URL}/auth/register`, data, {
+    headers: { 'Content-Type': 'application/json' },
+  }),
+  test: () => axios.get(`${BASE_URL}/auth/test`),
 };
 
-// Wallet APIs
+// ------------------------------------------------------------
+// 🔹 WALLET APIs
+// ------------------------------------------------------------
 export const walletAPI = {
-  addWallet: (data) => api.post('/addWallet', data),
-  topUp: (data) => api.post('/topUp', data),
-  transferFunds: (data) => api.post('/transferFunds', data),
-  getWalletsByEmail: (email) => api.get(`/getWalletsByEmail/${email}`),
+  addWallet: (data) => axios.post(`${BASE_URL}/addWallet`, data, {
+    headers: { 'Content-Type': 'application/json' },
+  }),
+  topUp: (data) => axios.post(`${BASE_URL}/topUp`, data, {
+    headers: { 'Content-Type': 'application/json' },
+  }),
+  transferFunds: (data) => axios.post(`${BASE_URL}/transferFunds`, data, {
+    headers: { 'Content-Type': 'application/json' },
+  }),
+  getWalletsByEmail: (email) => axios.get(`${BASE_URL}/getWalletsByEmail/${email}`),
 };
 
-// Transaction APIs
+// ------------------------------------------------------------
+// 🔹 TRANSACTION APIs
+// ------------------------------------------------------------
 export const transactionAPI = {
-  getAllTransactions: () => api.get('/getAllTransactions'),
+  getAllTransactions: () => axios.get(`${BASE_URL}/getAllTransactions`),
 };
 
-// Test APIs
+// ------------------------------------------------------------
+// 🔹 TEST APIs
+// ------------------------------------------------------------
 export const testAPI = {
-  getUsers: () => api.get('/test/users'),
-  getWallets: () => api.get('/test/wallets'),
-  getWalletsByEmail: (email) => api.get(`/test/wallets/${email}`),
-  deleteUser: (id) => api.delete(`/test/delete-user/${id}`),
-  clearUsers: () => api.delete('/test/clear-users'),
+  getUsers: () => axios.get(`${BASE_URL}/test/users`),
+  getWallets: () => axios.get(`${BASE_URL}/test/wallets`),
+  getWalletsByEmail: (email) => axios.get(`${BASE_URL}/test/wallets/${email}`),
+  deleteUser: (id) => axios.delete(`${BASE_URL}/test/delete-user/${id}`),
+  clearUsers: () => axios.delete(`${BASE_URL}/test/clear-users`),
 };
 
-// Admin APIs
+// ------------------------------------------------------------
+// 🔹 ADMIN APIs
+// ------------------------------------------------------------
 export const adminAPI = {
-  createAdmin: () => api.get('/admin/create-admin'),
+  createAdmin: () => axios.get(`${BASE_URL}/admin/create-admin`),
 };
-
-export default api;
