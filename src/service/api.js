@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_API_URL ||https://e-wallet-backend-e6gf.onrender.com;
+const BASE_URL = "https://e-wallet-backend-e6gf.onrender.com";
 
 const api = axios.create({
   baseURL: BASE_URL,
