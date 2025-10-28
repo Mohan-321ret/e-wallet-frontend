@@ -1,0 +1,56 @@
+/* === Home Page Styles === */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+  background: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);
+  text-align: center;
+}
+
+.home-container h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1e2a38;
+  margin-bottom: 10px;
+}
+
+.home-container p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.register-button {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Responsive for small screens */
+@media (max-width: 600px) {
+  .home-container h1 {
+    font-size: 28px;
+  }
+
+  .home-container p {
+    font-size: 16px;
+  }
+
+  .register-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
